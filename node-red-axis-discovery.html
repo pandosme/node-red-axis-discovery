@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Axis Discovery',{
+        category: 'Axis',
+        color: '#FFFF00',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"axis-discovery";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Axis Discovery">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="axis-discovery">
+	<h3>Axis Deivce Discovery Node</h3>
+	<p>TBD</p>
+	<h3>Inputs:</h3>
+    <dl class="message-properties">
+        <dt>tbd<span class="property-type">tbd</span></dt>
+        <dd>TBD...</dd>
+    </dl>		
+	<h3>Outputs:</h3>
+    <dl class="message-properties">
+        <dt>tbd<span class="property-type">tbd</span></dt>
+        <dd>TBD...</dd>
+    </dl>		
+</script>

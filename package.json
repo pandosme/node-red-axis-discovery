@@ -1,0 +1,17 @@
+{
+  "name": "node-red-contrib-axis-discovery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-red-axis-discovery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "keywords": ["Axis","Discovery"],
+  "license": "ISC",
+  "dependencies": {
+    "axis-discovery": "^1.1.5",
+    "axis-discovery-bonjour": "^1.0.7",
+    "axis-discovery-ssdp": "^5.0.5"
+  }
+}
