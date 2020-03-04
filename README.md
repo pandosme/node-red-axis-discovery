@@ -2,7 +2,7 @@
 
 Discovers Axis devices with SSD (UpnP) and Bonjour.
 
-##installation
+## installation
 - cd /home/your_home_dir
 - git clone pandosme/node-red-axis-discovery
 - cd /home/your_home_dir/.node-red
