@@ -4,18 +4,19 @@ module.exports = function(RED) {
 	function AxisDiscovery(config) {
 		RED.nodes.createNode(this, config);
 		var node = this;
+		node.status({fill:"red",shape:"dot",text:"Discovery stopped"});
 		var devices = {};
 		const discovery = new axis.Discovery();
 		var discoveryMode = false;
 		node.on("input", function(msg) {
-			if(msg.payload === "start" ) {
+			if(msg.payload === "start" || msg.payload === true ) {
 				if( discoveryMode === true )
 					return;
 				devices = {};
 				discovery.onHello(device => {
 					if( devices.hasOwnProperty(device.macAddress) )
 						return;
-					newDevice = {
+					var newDevice = {
 						serial: device.macAddress,
 						address: device.address,
 						linkLocal: device.linkLocalAddress,
@@ -33,7 +34,7 @@ module.exports = function(RED) {
 				return;
 			}
 			
-			if(msg.payload === "stop" ) {
+			if(msg.payload === "stop" || msg.payload === false ) {
 				if( discoveryMode === false )
 					return;
 				discovery.stop();

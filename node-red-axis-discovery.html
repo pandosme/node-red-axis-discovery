@@ -23,15 +23,24 @@
 
 <script type="text/html" data-help-name="Axis Discovery">
 	<h3>Axis Device Discovery Node</h3>
-	<p>TBD</p>
+	<p>Automatic discovers Axis device on a local network segment using Bonjour and UPnP (SSDP)</p>
+	<p>Discovered devices will only be announced once after discovery started</p>
 	<h3>Inputs:</h3>
     <dl class="message-properties">
-        <dt>tbd<span class="property-type">tbd</span></dt>
-        <dd>TBD...</dd>
-    </dl>		
+        <dt>payload<span class="property-type">string | bool</span></dt>
+        <dd>"start" or true will start discovery.</dd>
+        <dd>"stop" or false will stop discovery.</dd>
+	</dl>		
 	<h3>Outputs:</h3>
     <dl class="message-properties">
-        <dt>tbd<span class="property-type">tbd</span></dt>
-        <dd>TBD...</dd>
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>{
+			<br/>&nbsp;&nbsp;serial: "ACCCxxxxxx",
+			<br/>&nbsp;&nbsp;address:"1.2.3.4",
+			<br/>&nbsp;&nbsp;linkLocal:"169.254.x.x",
+			<br/>&nbsp;&nbsp;name:"Friendly Name",
+			<br/>&nbsp;&nbsp;port:80,
+			<br/>}</p>
+		</dd>
     </dl>		
 </script>
