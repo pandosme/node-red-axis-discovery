@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-axis-discovery",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discovers Axis devices on the local network",
   "node-red" : {
     "nodes": {

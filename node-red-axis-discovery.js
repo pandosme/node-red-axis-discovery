@@ -24,8 +24,7 @@ module.exports = function(RED) {
 						port: device.port
 					}
 					devices[device.macAddress] = newDevice;
-					msg.payload = newDevice;
-					node.send(msg);
+					node.send({payload:newDevice});
 				})
 				discovery.start();
 				discovery.search();
