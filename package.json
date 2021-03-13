@@ -23,7 +23,7 @@
   },
   "node-red" : {
     "nodes": {
-      "axis-discovery": "nodered-wrapper.js"
+      "axis-discovery": "axis-discovery-wrapper.js"
     }
   },
   "scripts": {
