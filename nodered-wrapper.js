@@ -1,3 +1,5 @@
+//Copyright (c) 2021 Fred Juhlin
+
 const axis = require('axis-discovery');
 
 module.exports = function(RED) {

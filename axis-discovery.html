@@ -1,19 +1,3 @@
-<script type="text/javascript">
-    RED.nodes.registerType('Axis Discovery',{
-        category: 'Axis',
-        color: '#FFFF00',
-        defaults: {
-            name: {value:""}
-        },
-        inputs:1,
-        outputs:1,
-        icon: "file.png",
-        label: function() {
-            return this.name||"Axis Discovery";
-        }
-    });
-</script>
-
 <script type="text/html" data-template-name="Axis Discovery">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
@@ -21,10 +5,25 @@
     </div>
 </script>
 
+<script type="text/javascript">
+    RED.nodes.registerType('Axis Discovery',{
+        category: 'Axis',
+        color: '#FFCC33',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-searchengin",
+        label: function() {
+            return this.name||"Axis Discovery";
+        }
+    });
+</script>
+
 <script type="text/html" data-help-name="Axis Discovery">
-	<h3>Axis Device Discovery Node</h3>
-	<p>Automatic discovers Axis device on a local network segment using Bonjour and UPnP (SSDP)</p>
-	<p>Discovered devices will only be announced once after discovery started</p>
+	<p>Automatic discovers Axis device on a local network segment using UPnP (SSDP) and Bonjour.</p>
+	<p>Each discovered devices will only be announced once after discovery started</p>
 	<h3>Inputs:</h3>
     <dl class="message-properties">
         <dt>payload<span class="property-type">string | bool</span></dt>

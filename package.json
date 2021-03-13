@@ -1,12 +1,13 @@
 {
   "name": "node-red-contrib-axis-discovery",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Discovers Axis devices on the local network",
-  "node-red" : {
-    "nodes": {
-      "axis-discovery": "node-red-axis-discovery.js"
-    }
+  "author": {
+    "name": "Fred Juhlin",
+    "email": "fred.juhlin@gmail.com"
   },
+  "license": "MIT",
+  "keywords": ["node-red","Axis","Camera","Discovery"],
   "homepage": "https://github.com/pandosme/node-red-axis-discovery",
   "repository": {
     "type": "git",
@@ -15,15 +16,17 @@
   "bugs": {
     "url": "https://github.com/pandosme/node-red-axis-discovery/issues"
   },  
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Pandos Me",
-  "keywords": ["node-red","Axis","Camera","Discovery"],
-  "license": "MIT",
   "dependencies": {
     "axis-discovery": "^1.1.5",
     "axis-discovery-bonjour": "^1.0.7",
     "axis-discovery-ssdp": "^5.0.5"
+  },
+  "node-red" : {
+    "nodes": {
+      "axis-discovery": "nodered-wrapper.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
