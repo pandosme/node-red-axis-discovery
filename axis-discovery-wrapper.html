@@ -1,5 +1,13 @@
 <script type="text/html" data-template-name="Axis Discovery">
     <div class="form-row">
+        <label for="node-input-output"><i class="icon-tag"></i> Output</label>
+        <select id="node-input-output">
+            <option value="Once">Only one message per device</option>
+            <option value="Every">Every message</option>
+		</select>
+	</div>
+
+    <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
@@ -10,7 +18,8 @@
         category: 'Axis',
         color: '#FFCC33',
         defaults: {
-            name: {value:""}
+            name: {value:""},
+			output: {value:"Once"},
         },
         inputs:1,
         outputs:1,
@@ -23,12 +32,15 @@
 
 <script type="text/html" data-help-name="Axis Discovery">
 	<p>Automatic discovers Axis device on a local network segment using UPnP (SSDP) and Bonjour.</p>
-	<p>Each discovered devices will only be announced once after discovery started</p>
 	<h3>Inputs:</h3>
     <dl class="message-properties">
         <dt>payload<span class="property-type">string | bool</span></dt>
         <dd>"start" or true will start discovery.</dd>
         <dd>"stop" or false will stop discovery.</dd>
+	</dl>		
+    <dl class="message-properties">
+        <dt>Output<span class="property-type">select</span></dt>
+        <dd>Selct once if you only want one message for each device,  Otherwise you will get every discovery message fram all devices</dd>
 	</dl>		
 	<h3>Outputs:</h3>
     <dl class="message-properties">
@@ -39,6 +51,7 @@
 			<br/>&nbsp;&nbsp;linkLocal:"169.254.x.x",
 			<br/>&nbsp;&nbsp;name:"Friendly Name",
 			<br/>&nbsp;&nbsp;port:80,
+			<br/>&nbsp;&nbsp;timestamp: EPOCH timestamp when discovery was made			
 			<br/>}</p>
 		</dd>
     </dl>		

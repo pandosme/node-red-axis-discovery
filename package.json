@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-axis-discovery",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Discovers Axis devices on the local network",
   "author": {
     "name": "Fred Juhlin",
@@ -17,9 +17,7 @@
     "url": "https://github.com/pandosme/node-red-axis-discovery/issues"
   },  
   "dependencies": {
-    "axis-discovery": "^1.1.5",
-    "axis-discovery-bonjour": "^1.0.7",
-    "axis-discovery-ssdp": "^5.0.5"
+    "axis-discovery": "^2.0.0",
   },
   "node-red" : {
     "nodes": {

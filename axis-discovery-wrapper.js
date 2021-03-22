@@ -5,28 +5,37 @@ const axis = require('axis-discovery');
 module.exports = function(RED) {
 	function AxisDiscovery(config) {
 		RED.nodes.createNode(this, config);
-		var node = this;
-		node.status({fill:"red",shape:"dot",text:"Discovery stopped"});
-		var devices = {};
+//		var devices = {};
 		const discovery = new axis.Discovery();
 		var discoveryMode = false;
+		this.output = config.output;
+		var node = this;
+		node.status({fill:"red",shape:"dot",text:"Discovery stopped"});
 		node.on("input", function(msg) {
 			if(msg.payload === "start" || msg.payload === true ) {
 				if( discoveryMode === true )
 					return;
-				devices = {};
 				discovery.onHello(device => {
-					if( devices.hasOwnProperty(device.macAddress) )
+					var devices = node.context().get("devices");
+					if(!devices)
+						devices = {};
+					if( node.output === "Once" && devices.hasOwnProperty(device.macAddress) )
 						return;
+					
 					var newDevice = {
 						serial: device.macAddress,
 						address: device.address,
-						linkLocal: device.linkLocalAddress,
+						linkLocal: device.linkLocalAddress?device.linkLocalAddress:null,
 						name: device.friendlyName,
-						port: device.port
+						port: device.port,
+						timestamp: new Date().getTime()
 					}
 					devices[device.macAddress] = newDevice;
-					node.send({payload:newDevice});
+					node.context().set("devices",devices);
+					node.send({
+						topic: newDevice.name,
+						payload: newDevice
+					});
 				})
 				discovery.start();
 				discovery.search();
@@ -45,5 +54,8 @@ module.exports = function(RED) {
 		});
 		
 	}
-	RED.nodes.registerType("Axis Discovery", AxisDiscovery);
+	RED.nodes.registerType("Axis Discovery", AxisDiscovery, {
+		name: { type:"text" },
+		output: { type:"text" }
+	});
 };
