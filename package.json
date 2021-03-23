@@ -17,7 +17,9 @@
     "url": "https://github.com/pandosme/node-red-axis-discovery/issues"
   },  
   "dependencies": {
-    "axis-discovery": "^2.0.0"
+    "axis-discovery": "^2.0.0",
+    "axis-discovery-bonjour": "2.0.0",
+    "axis-discovery-ssdp": "6.0.0"	
   },
   "node-red" : {
     "nodes": {
