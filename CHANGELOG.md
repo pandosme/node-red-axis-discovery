@@ -1,6 +1,7 @@
 ### Version 2.0.0
 * Updated to use axis-discovery 2.0.0
 * Added possibility to configure to get every discovery announcement or only once per device
+* Fixed a flaw that would generate duplicated messages when restarting discovery
 
 ### Version 1.0.2
 Adjustment on node color and icon

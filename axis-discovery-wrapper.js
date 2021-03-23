@@ -5,8 +5,31 @@ const axis = require('axis-discovery');
 module.exports = function(RED) {
 	function AxisDiscovery(config) {
 		RED.nodes.createNode(this, config);
-//		var devices = {};
 		const discovery = new axis.Discovery();
+
+		discovery.on('hello', (device) => {
+			var devices = node.context().get("devices");
+			if(!devices)
+				devices = {};
+			if( node.output === "Once" && devices.hasOwnProperty(device.macAddress) )
+				return;
+			
+			var newDevice = {
+				serial: device.macAddress,
+				address: device.address,
+				linkLocal: device.linkLocalAddress?device.linkLocalAddress:null,
+				name: device.friendlyName,
+				port: device.port,
+				timestamp: new Date().getTime()
+			}
+			devices[device.macAddress] = newDevice;
+			node.context().set("devices",devices);
+			node.send({
+				topic: newDevice.name,
+				payload: newDevice
+			});
+		})
+		
 		var discoveryMode = false;
 		this.output = config.output;
 		var node = this;
@@ -15,28 +38,6 @@ module.exports = function(RED) {
 			if(msg.payload === "start" || msg.payload === true ) {
 				if( discoveryMode === true )
 					return;
-				discovery.onHello(device => {
-					var devices = node.context().get("devices");
-					if(!devices)
-						devices = {};
-					if( node.output === "Once" && devices.hasOwnProperty(device.macAddress) )
-						return;
-					
-					var newDevice = {
-						serial: device.macAddress,
-						address: device.address,
-						linkLocal: device.linkLocalAddress?device.linkLocalAddress:null,
-						name: device.friendlyName,
-						port: device.port,
-						timestamp: new Date().getTime()
-					}
-					devices[device.macAddress] = newDevice;
-					node.context().set("devices",devices);
-					node.send({
-						topic: newDevice.name,
-						payload: newDevice
-					});
-				})
 				discovery.start();
 				discovery.search();
 				discoveryMode = true;
@@ -52,7 +53,6 @@ module.exports = function(RED) {
 				discoveryMode = false;
 			}
 		});
-		
 	}
 	RED.nodes.registerType("Axis Discovery", AxisDiscovery, {
 		name: { type:"text" },
