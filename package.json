@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-axis-discovery",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Discovers Axis devices on the local network",
   "author": {
     "name": "Fred Juhlin",
@@ -18,8 +18,8 @@
   },  
   "dependencies": {
     "axis-discovery": "^2.0.0",
-    "axis-discovery-bonjour": "2.0.0",
-    "axis-discovery-ssdp": "6.0.0"	
+    "axis-discovery-bonjour": "^2.0.0",
+    "axis-discovery-ssdp": "^6.0.1"	
   },
   "node-red" : {
     "nodes": {

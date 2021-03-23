@@ -1,3 +1,6 @@
+### Version 2.0.1
+* Fixed an flaw in package.json that prevented correct installation
+
 ### Version 2.0.0
 * Updated to use axis-discovery 2.0.0
 * Added possibility to configure to get every discovery announcement or only once per device
